@@ -10,16 +10,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class HomePage {
 
-  public countries: any = [
-    {
-      Name: 'USA',
-      Code: 'us'
-    },
-    {
-      Name: "India",
-      Code: 'in'
-    }
-  ]
+  public countries: any ;
   // public countries: any = ['ae', ar ,at, au, be, bg, br,
   //    ca, ch, cn, co, cu, cz, de, eg, fr, gb, gr, hk, hu, id, ie, il, 
   //    in, it, jp, kr, lt, lv, ma, mx, my, ng, nl, no, 
@@ -37,7 +28,8 @@ export class HomePage {
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let options = { headers: headers };
-    this.service.getByCountry(country, options)
+
+    this.service.getByCountry(country)
       .subscribe(
         (res) => {
           console.log(res.articles);
@@ -53,7 +45,7 @@ export class HomePage {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let options = { headers: headers };
 
-    this.service.getHeadlines(options)
+    this.service.getHeadlines()
       .subscribe(
         (res) => {
           this.news = res.articles;
@@ -64,7 +56,19 @@ export class HomePage {
         }
       )
 
-    this.service.getSources(options)
+      this.service.getCountries()
+      .subscribe(
+        (res)=>{
+          this.countries = res;
+          console.log(res);
+        },
+        (err)=>{
+          console.log(err);
+        }
+
+      )
+
+    this.service.getSources()
       .subscribe(
         (res) => {
           console.log(res.sources);

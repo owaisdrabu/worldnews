@@ -12,13 +12,13 @@
 <ion-content>
   <ion-item>
     <!-- <ion-label>Select Country</ion-label> -->
-    <ion-select (ionChange)="onChange($event)">
-      <ion-select-option selected value ="Default">World</ion-select-option>
-      <ion-select-option *ngFor="let c of countries" value="{{c.Code}}">{{c.Name}}</ion-select-option>
+    <ion-select interface="action-sheet" placeholder="Country" (ionChange)="onChange($event)">
+      <!-- <ion-select-option selected >Select Country</ion-select-option> -->
+      <ion-select-option *ngFor="let c of countries" value="{{c.code}}">{{c.country}}</ion-select-option>
     </ion-select>
   </ion-item>
 
-  <ion-grid>
+  <!-- <ion-grid>
     <ion-row>
       <ion-col>
         <ion-avatar>
@@ -28,8 +28,11 @@
       <ion-col>2</ion-col>
       <ion-col>3</ion-col>
     </ion-row>
-  </ion-grid>
-  <ion-label>Headlines 'country'</ion-label>
+  </ion-grid> -->
+
+  <div class="container">
+    <ion-label>Headlines</ion-label>
+  </div>
   <ion-list *ngFor="let n of news">
     <ion-card (click)="onClickCard(n.source.id)">
       <img src="{{n.urlToImage}}" alt="">

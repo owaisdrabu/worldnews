@@ -20,18 +20,26 @@ export class SharedService {
   headlines = this.host + this.endpoint1 + "country=" + this.country + "&apiKey=" + this.api;
   sources = this.host + this.endpoint2 + "&apiKey=" + this.api;
 
-  getHeadlines(options): Observable<any> {
-    return this.http.get(this.headlines, options);
+  getHeadlines(): Observable<any> {
+    return this.http.get(this.headlines);
   }
 
-  getSources(options): Observable<any> {
-    return this.http.get(this.sources, options);
+  getSources(): Observable<any> {
+    return this.http.get(this.sources);
   }
 
-  getByCountry(country, options):Observable<any> {
+  getCountries(): Observable<any> {
+    return this.http.get('./assets/countries.json');
+  }
+
+  getByCountry(country): Observable<any> {
     let c = country
     let api = this.host + this.endpoint1 + "country=" + c + "&apiKey=" + this.api;
-    return this.http.get(api, options);
+    return this.http.get(api);
+  }
+  cors = "https://cors-anywhere.herokuapp.com";
+  getWeather(options): Observable<any> {
+    return this.http.get(this.cors + '/https://api.darksky.net/forecast/69dffd31b8b2b9ae86aae57b66a82e2e/12.933566,%2077.618139', options);
   }
 
 

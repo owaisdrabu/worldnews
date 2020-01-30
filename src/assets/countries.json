@@ -1,0 +1,50 @@
+[
+    {
+        "country": "USA",
+        "code": "us"
+    },
+    {
+        "country": "India",
+        "code": "in"
+    },
+    {
+        "country": "Canada",
+        "code": "ca"
+    },
+    {
+        "country": "France",
+        "code": "fr"
+    },
+    {
+        "country": "Egypt",
+        "code": "eg"
+    },
+    {
+        "country": "UAE",
+        "code": "ae"
+    },
+    {
+        "country": "Australia",
+        "code": "au"
+    },
+    {
+        "country": "Russia",
+        "code": "ru"
+    },
+    {
+        "country": "UK",
+        "code": "gb"
+    },
+    {
+        "country": "Japan",
+        "code": "jp"
+    },
+    {
+        "country": "Switzerland",
+        "code": "ch"
+    },
+    {
+        "country": "Italy",
+        "code": "it"
+    }
+]
