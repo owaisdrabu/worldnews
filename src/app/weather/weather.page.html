@@ -4,22 +4,94 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Weather
+      <ion-input type="text" placeholder="Location"></ion-input>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="abc">
   <ion-card>
     <img src="" alt="">
     <!-- <ion-card-header>
       <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
       <ion-card-title>Card Title</ion-card-title>
     </ion-card-header> -->
-  
+
+    <!-- icon: "clear-day"
+        precipIntensity: 0
+        precipProbability: 0
+        apparentTemperature: 80.28
+        dewPoint: 61.31
+        windGust: 8.82
+        windBearing: 162
+        cloudCover: 0
+        ozone: 241.9 -->
+
+
     <ion-card-content>
-      {{weatherCurrently.summary}}
-      {{(weatherCurrently.temperature - 32 )* (5/9)| number:'1.0-0' }}
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <p class="summary">{{weatherCurrently.summary}}</p>
+            <p class="temperature">{{(weatherCurrently.temperature - 32 )* (5/9)| number:'1.0-0' }}°c </p>
+          </ion-col>
+          <ion-col size="4">
+            <img src="https://cdn3.vectorstock.com/i/1000x1000/75/92/yellow-sun-icon-vector-12597592.jpg" alt="">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-segment scrollable>
+        <ion-segment-button  style="color: black;" *ngFor="let hourly of weatherHourly">
+          {{hourly.summary}} <br>
+          {{(hourly.temperature- 32 )* (5/9)| number:'1.0-0' }}°c <br>
+          {{hourly.time}}:00
+        </ion-segment-button>
+        <!-- <ion-item  *ngFor="let hourly of weatherHourly">
+          {{hourly.summary}} <br>
+          {{hourly.temperature}} <br>
+          {{hourly.time}}
+        </ion-item> -->
+        <!-- <ion-segment-button value="friends">
+          <ion-label>Friends</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="enemies">
+          <ion-label>Enemies</ion-label>
+        </ion-segment-button> -->
+      </ion-segment>
+<div class="contain">
+
+
+      <!-- <div scrollX="true" style="overflow-x: auto;">
+        <ion-item  *ngFor="let hourly of weatherHourly">
+          {{hourly.summary}} <br>
+          {{hourly.temperature}} <br>
+          {{hourly.time}}
+        </ion-item>
+      </div> -->
+    </div>
+
+      <ion-list>
+        <ion-item> <label>Humidity </label>
+          <p>{{ weatherCurrently.humidity}}</p>
+        </ion-item>
+        <ion-item> <label>Pressure</label>
+          <p>{{ weatherCurrently.pressure}}</p>
+        </ion-item>
+        <ion-item> <label>wind</label>
+          <p>{{ weatherCurrently.windSpeed}}</p>
+        </ion-item>
+        <ion-item> <label>UV Index</label>
+          <p> {{weatherCurrently.uvIndex}}</p>
+        </ion-item>
+        <ion-item> <label>visibility</label>
+          <p>{{weatherCurrently.visibility}}</p>
+        </ion-item>
+      </ion-list>
+
+
+
+
     </ion-card-content>
   </ion-card>
 </ion-content>

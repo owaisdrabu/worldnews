@@ -38,8 +38,10 @@ export class SharedService {
     return this.http.get(api);
   }
   cors = "https://cors-anywhere.herokuapp.com";
-  getWeather(options): Observable<any> {
-    return this.http.get(this.cors + '/https://api.darksky.net/forecast/69dffd31b8b2b9ae86aae57b66a82e2e/12.933566,%2077.618139', options);
+  getWeather(lat, lon, options): Observable<any> {
+    console.log("aaaa" + lat + ',' + lon)
+    return this.http.get(this.cors +
+      '/https://api.darksky.net/forecast/69dffd31b8b2b9ae86aae57b66a82e2e/' + lat + "," + lon, options);
   }
 
 
