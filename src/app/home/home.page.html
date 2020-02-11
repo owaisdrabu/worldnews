@@ -10,6 +10,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-item>
     <!-- <ion-label>Select Country</ion-label> -->
     <ion-select interface="action-sheet" placeholder="Country" (ionChange)="onChange($event)">
@@ -18,23 +21,45 @@
     </ion-select>
   </ion-item>
 
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-avatar>
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-        </ion-avatar>
-      </ion-col>
-      <ion-col>2</ion-col>
-      <ion-col>3</ion-col>
-    </ion-row>
-  </ion-grid> -->
+
 
   <div class="container">
-    <ion-label>Headlines</ion-label>
+    <ion-grid>
+      <ion-row class="roundButton">
+        <ion-col>
+          <ion-button (click)="browser()">OPen</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>Default</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>Default</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>Default</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button>Default</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>Default</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>Default</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button>Default</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-  <ion-list *ngFor="let n of news">
-    <ion-card (click)="onClickCard(n.source.id)">
+
+
+
+  <ion-list *ngFor="let n of news, let i = index">
+    <ion-card (click)="browser(n.url)">
       <img src="{{n.urlToImage}}" alt="">
       <ion-card-header>
         <ion-card-title>
@@ -48,7 +73,7 @@
         <p>
           {{n.description}}
         </p>
-        <p>Author {{n.author}}</p>
+        <p>{{n.publishedAt | date}}</p>
       </ion-card-content>
     </ion-card>
   </ion-list>

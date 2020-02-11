@@ -2,3 +2,12 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+ion-button{
+  --border-radius: 50%;
+  width: 15vw;
+  height: 10vh;
+}
+ion-grid{
+  padding: 5%;
+}

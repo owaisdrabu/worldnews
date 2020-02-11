@@ -11,10 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { DetailsPage } from './details/details.page';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, DetailsPage],
+  entryComponents: [
+    DetailsPage
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -26,8 +30,10 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
     SplashScreen,
     Geolocation,
     NativeGeocoder,
+    InAppBrowser,    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}

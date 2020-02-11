@@ -4,12 +4,16 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <ion-input type="text" placeholder="Location"></ion-input>
+      
+      <ion-input (keyup.enter)="testkey()" type="text" placeholder="Location"></ion-input>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="abc">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <img src="" alt="">
     <!-- <ion-card-header>
@@ -36,16 +40,20 @@
             <p class="temperature">{{(weatherCurrently.temperature - 32 )* (5/9)| number:'1.0-0' }}°c </p>
           </ion-col>
           <ion-col size="4">
-            <img src="https://cdn3.vectorstock.com/i/1000x1000/75/92/yellow-sun-icon-vector-12597592.jpg" alt="">
+            <ion-icon class="icon" name="sunny"></ion-icon>
+            <!-- <img src="https://cdn3.vectorstock.com/i/1000x1000/75/92/yellow-sun-icon-vector-12597592.jpg" alt=""> -->
           </ion-col>
         </ion-row>
       </ion-grid>
 
       <ion-segment scrollable>
-        <ion-segment-button  style="color: black;" *ngFor="let hourly of weatherHourly">
-          {{hourly.summary}} <br>
+        <ion-segment-button style="color: black;" *ngFor="let hourly of weatherHourly">
+
           {{(hourly.temperature- 32 )* (5/9)| number:'1.0-0' }}°c <br>
-          {{hourly.time}}:00
+          {{hourly.time}}:00 <br>
+          {{hourly.summary}}
+          <ion-icon name="{{hourly.icon}}"></ion-icon>
+
         </ion-segment-button>
         <!-- <ion-item  *ngFor="let hourly of weatherHourly">
           {{hourly.summary}} <br>
@@ -59,17 +67,17 @@
           <ion-label>Enemies</ion-label>
         </ion-segment-button> -->
       </ion-segment>
-<div class="contain">
+      <div class="contain">
 
 
-      <!-- <div scrollX="true" style="overflow-x: auto;">
+        <!-- <div scrollX="true" style="overflow-x: auto;">
         <ion-item  *ngFor="let hourly of weatherHourly">
           {{hourly.summary}} <br>
           {{hourly.temperature}} <br>
           {{hourly.time}}
         </ion-item>
       </div> -->
-    </div>
+      </div>
 
       <ion-list>
         <ion-item> <label>Humidity </label>

@@ -26,7 +26,9 @@ export class WeatherPage implements OnInit {
   ) { }
 
 
-
+  testkey(){
+    console.log("keytest")
+  }
 
   ngAfterViewInit() {
 
@@ -79,7 +81,7 @@ export class WeatherPage implements OnInit {
 
           let formattedTime = hrs;
           console.log(formattedTime);
-          this.weatherHourly = res.hourly.data.slice(0,12).map(
+          this.weatherHourly = res.hourly.data.slice(0, 12).map(
             function (value) {
               let time = new Date(value.time * 1000);
               let hrs = time.getHours();
@@ -102,4 +104,13 @@ export class WeatherPage implements OnInit {
 
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.ngAfterViewInit();
+      event.target.complete();
+    }, 2000);
+  }
 }
